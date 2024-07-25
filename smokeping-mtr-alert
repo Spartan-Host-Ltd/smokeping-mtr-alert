@@ -80,7 +80,7 @@ RTT: {rtt}"""
 
     try:
         p = subprocess.Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=subprocess.PIPE)
-        p.communicate(message.as_string())
+        p.communicate(message.as_string().encode())
     except:
         sys.stderr.write('error running sendmail.\n')
         sys.exit(1)
