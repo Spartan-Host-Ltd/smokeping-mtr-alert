@@ -22,7 +22,8 @@ Michael Fincham <michael.fincham@catalyst.net.nz>.
 
 import argparse
 import datetime
-import pipes
+#import pipes
+import shlex
 import socket
 import subprocess
 import sys
@@ -55,7 +56,7 @@ Target hostname: {hostname}
 Loss pattern: {loss_pattern}
 RTT: {rtt}"""
 
-    mtr_command = "mtr -n --report %s" % pipes.quote(args.hostname)
+    mtr_command = "mtr -n --report %s" % shlex.quote(args.hostname)
     try:
         mtr_output = subprocess.check_output(mtr_command.split()).strip()
     except:
